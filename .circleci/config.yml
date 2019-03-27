@@ -61,8 +61,8 @@ jobs:
       - setup_remote_docker
       - attach_workspace:
           at: workspace
-      - run:
-          name: Install utils
+      #- run:
+      #    name: Install utils
           #command: |
             #apt-get update
             #apt-get install jq
