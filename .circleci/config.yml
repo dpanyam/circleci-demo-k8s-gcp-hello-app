@@ -62,7 +62,8 @@ jobs:
       - attach_workspace:
           at: workspace
       - run: |
-          name: Install utils
+          name: install utils
+          command: |
           sudo rm /etc/apt/sources.list
           echo "deb http://archive.debian.org/debian/ jessie-backports main" | sudo tee -a /etc/apt/sources.list
           echo "deb-src http://archive.debian.org/debian/ jessie-backports main" | sudo tee -a /etc/apt/sources.list
