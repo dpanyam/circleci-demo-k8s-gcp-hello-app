@@ -14,7 +14,7 @@ jobs:
             set -x
             if [ "${CIRCLE_BRANCH}" == "master" ]
             then
-              DOCKER_IMAGE_TAG=master-${CIRCLE_TAG}
+              DOCKER_IMAGE_TAG=master-${CIRCLE_SHA1}
               echo "$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG" > full_docker_image_name
             else
               DOCKER_IMAGE_TAG=${CIRCLE_BRANCH}
