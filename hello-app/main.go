@@ -22,6 +22,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
 
 func main() {
@@ -45,7 +46,7 @@ func main() {
 func hello(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Serving request: %s", r.URL.Path)
 	host, _ := os.Hostname()
-	fmt.Fprintf(w, "Hello, world testing circle ci final test!\n")
+	fmt.Fprintf(w, "Hello, world testing circle YYYY.MM.DD : ", currentTime.Format("2006.01.02 15:04:05"")
 	fmt.Fprintf(w, "Version: 1.0.0\n")
 	fmt.Fprintf(w, "Hostname: %s\n", host)
 }
