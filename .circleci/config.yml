@@ -14,7 +14,7 @@ jobs:
             set -x
             if [ "${CIRCLE_BRANCH}" == "master" ]
             then
-              DOCKER_IMAGE_TAG=v${CIRCLE_BUILD_NUM}
+              DOCKER_IMAGE_TAG=master-${CIRCLE_TAG}
               echo "$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG" > full_docker_image_name
             else
               DOCKER_IMAGE_TAG=${CIRCLE_BRANCH}
@@ -84,8 +84,8 @@ jobs:
             fi
             FULL_DOCKER_IMAGE_NAME=$(cat workspace/full_docker_image_name)
             # Replace DOCKER_IMAGE_NAME placeholder in manifest with actual image name
-            KUBE_CONFIG=$(cat hello-app/manifests/helloweb-all-in-one.yaml.template| sed "s|DOCKER_IMAGE_NAME|$FULL_DOCKER_IMAGE_NAME|g")
-            echo "$KUBE_CONFIG" | kubectl apply -f -
+            KUBES_CONFIG=$(cat hello-app/manifests/helloweb-all-in-one.yaml.template| sed "s|DOCKER_IMAGE_NAME|$FULL_DOCKER_IMAGE_NAME|g")
+            echo "$KUBES_CONFIG" | kubectl apply -f -
             # Wait for deployment to finish
             kubectl rollout status deployment/helloweb
             kubectl get pods
